@@ -1,0 +1,62 @@
+{{template "header"}}
+<title>分类 基于beego开发的博客</title>
+</head>
+<body>
+<div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        {{template "navbar" .}}
+    </div>
+</div>
+
+<div class="container">
+    <h1>分类列表</h1>
+    <form method="post" action="">
+        <div class="form-group">
+            <h4>分类名称</h4>
+            <h2>分类名称</h2>
+            <input id="name" class="form-control" placeholder="Enter category name please" name="title">
+        </div>
+        <input type="hidden" name="option" value="add">
+        <button type="submit" class="btn btn-default" onclick="return checkInput()">添加</button>
+    </form>
+
+    <script type="text/javascript">
+        function checkInput() {
+            var name = document.getElementById("name")
+            if (name.value.length <= 0) {
+                alert("请输入分类名称")
+                return false
+            }
+            return true
+        }
+    </script>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>分类名称</th>
+                <th>文章数</th>
+                <th>创建时间</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{range .Categories}}
+                <tr>
+                    <th>{{.Id}}</th>
+                    <th>{{.Title}}</th>
+                    <th>{{.TopicCount}}</th>
+                    <th>{{.Created}}</th>
+                    <th>
+                        <a href="/delete/{{.Id}}">删除</a>
+                    </th>
+                </tr>
+            {{end}}
+        </tbody>
+    </table>
+</div>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+</body>
+</html>

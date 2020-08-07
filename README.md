@@ -3,5 +3,8 @@
 
 
 go get github.com/astaxie/beego
+
 go get github.com/unknwon/com
+
 go get github.com/mattn/go-sqlite3
+
